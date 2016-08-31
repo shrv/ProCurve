@@ -1,4 +1,4 @@
-#!/usr/bin/python python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 import sys
@@ -7,6 +7,7 @@ import argparse
 import os
 import add
 import conf
+import re
 
 def Parser():
 	parser = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve", epilog = "")
@@ -32,13 +33,12 @@ if (os.path.isfile(template)) == False:
 	print ('In directory "'+template[0]+'" file "'+template[1]+'" not found')
 	quest_add_template = input ('You want to create a template?[y/n]')
 	if quest_add_template.lower() == 'n':
-		print (quest_add_template.lower())
 		sys.exit()
 	elif quest_add_template.lower() != 'y':
-		print ('An invalid character')
+		print ('An invalid symbol')
 		sys.exit()
 	else:
-		add.created()
-		
-conf.check()
+		add.created(namediff)
+else:
+	conf.check()
 
