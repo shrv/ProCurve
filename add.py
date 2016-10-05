@@ -1,4 +1,4 @@
-#!/usr/bin/python python3
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 def created(namediff):
@@ -25,13 +25,16 @@ def created(namediff):
 	for x in range(len(new_read)):
 		string = new_read[x]
 		string = string.rstrip('\n')	
-		print (string)
-		quest1 = input ("You need to modify the line or leave as is. It is necessary to modify - 'Y', leave as is - 'N': ")
+		print ("\n")
+		print ("=================")
+		print ("string: "+string)
+		quest1 = input ("You need to modify the line or leave as is in string: \""+string+"\". It is necessary to modify - 'Y', leave as is - 'N': ")
 		if quest1.lower() == 'y':
 			temp = {}
 			temp['orig'] = string
 			while quest1.lower() == 'y':
-				quest2 = input ("Enter a part of a string, which is variable, is not required to take into consider. Specify strictly in line configuration: ")
+				quest2 = input ("Enter a part of a string \""+string+"\" , which is variable, is not required to take into consider. Specify strictly in line configuration: ")
+				print ("\n")
 				if re.search(quest2, string) == None:
 					print ("Said part of the line in the template is not found.")
 				else:
@@ -45,7 +48,7 @@ def created(namediff):
 						else:
 							temp[quest2] = '(1|2)(4|5)[0-9]'
 							string = string.replace(quest2, '(1|2)(4|5)[0-9]')
-				quest1 = input ("You need to modify the line or leave as is. It is necessary to modify - 'Y', leave as is - 'N': ")
+				quest1 = input ("You need to modify the line or leave as is in string: \""+string+"\". It is necessary to modify - 'Y', leave as is - 'N': ")
 			temp['patt'] = string
 			tmpl[z] = temp
 			z += 1
@@ -62,4 +65,4 @@ def created(namediff):
 	f = open(template_dir, 'w')
 	f.write(str(tmpl))
 	f.close()	
-#created()
+#created(namediff)

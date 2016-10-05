@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3 
 # -*- coding: UTF-8 -*-
 
 import sys
@@ -40,5 +40,5 @@ if (os.path.isfile(template)) == False:
 	else:
 		add.created(namediff)
 else:
-	conf.check()
+	conf.check(namediff)
 
