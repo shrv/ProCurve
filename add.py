@@ -57,6 +57,8 @@ def created(namediff):
 				print ("\n")
 				if re.search(quest2, string) == None:
 					print ("Said part of the line in the template is not found.")
+				elif re.search('\s', quest2) == '\s':
+					print ("It is impossible to replace immediately in line to specify two or more words or a set of numbers.\n Specifies whether one word. For instance vlan 412, you must first vlan, and then 412.\n")
 				else:
 					if re.match('vlan (1|2)[0-9]{2}', string) == None:
 						temp[quest2] = '[a-zA-Z0-9\_\-\.\,]{1,}'
