@@ -44,7 +44,14 @@ def created(namediff):
 			string = new_read[x]
 			string = string.rstrip('\n')	
 		original = string
-		world = len(original.split(' '))	
+		flag = 0 
+		world = 0
+		for j in string:
+			if j != ' ' and flag == 0:
+				world += 1
+				flag =1
+			elif j == ' ':
+				flag = 0	
 		print ("\n")
 		print ("=================")
 		print ("string: "+string)
@@ -60,16 +67,16 @@ def created(namediff):
 				elif re.search('\s', quest2) != None:
 					print ("It is impossible to replace immediately in line to specify two or more words or a set of numbers.\n Specifies whether one word. For instance vlan 412, you must first vlan, and then 412.\n")
 				else:
-					if re.match('vlan (1|2)[0-9]{2}', string) == None:
-						temp[quest2] = '[a-zA-Z0-9\_\-\.\,]{1,}'
-						string = string.replace(quest2, '[a-zA-Z0-9\_\-\.\,]{1,}')
+					if re.match('\d{1,4}$', quest2) != None:
+						temp[quest2] = '\d{1,4}'
+						string = string.replace(quest2, '\d{1,4}')
 					else:
-						if re.match ('vlan (1|2)(4|5)[0-9]', string) == None:
-							temp[quest2] = '(1|2)[0-9]{2}'
-							string = string.replace(quest2, '(1|2)[0-9]{2}')
+						if re.match ('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', quest2) != None:
+							temp[quest2] = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
+							string = string.replace(quest2, '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
 						else:
-							temp[quest2] = '(1|2)(4|5)[0-9]'
-							string = string.replace(quest2, '(1|2)(4|5)[0-9]')
+							temp[quest2] = '[a-zA-Z0-9\_\-\.\,]{1,}'
+							string = string.replace(quest2, '[a-zA-Z0-9\_\-\.\,]{1,}')
 				quest1 = input ("Wanted more changes in the line: \""+original+"\". It is necessary to modify - 'Y', leave as is - 'N': ")
 			temp['patt'] = string
 			temp['wrld'] = world

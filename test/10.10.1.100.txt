@@ -1,0 +1,200 @@
+Running configuration:
+
+; J9019B Configuration Editor; Created on release #Q.11.11
+
+hostname "hp25105corp"
+time timezone 180
+time daylight-time-rule User-defined begin-date 3/25 end-date 10/25
+no cdp run
+no web-management
+qos dscp-map 000000 name "default"
+qos dscp-map 000000 priority 0
+qos dscp-map 100010 name "AF4"
+qos dscp-map 100010 priority 4
+qos dscp-map 101110 name "ats"
+qos dscp-map 101110 priority 5
+qos dscp-map 110000 name "mgmt"
+qos dscp-map 110000 priority 6
+interface 1
+   broadcast-limit 25
+exit
+interface 2
+   broadcast-limit 25
+exit
+interface 3
+   broadcast-limit 25
+exit
+interface 4
+   broadcast-limit 25
+   speed-duplex auto-10
+exit
+interface 5
+   broadcast-limit 25
+exit
+interface 6
+   broadcast-limit 25
+exit
+interface 7
+   broadcast-limit 25
+exit
+interface 8
+   broadcast-limit 25
+exit
+interface 9
+   broadcast-limit 25
+exit
+interface 10
+   broadcast-limit 25
+exit
+interface 11
+   broadcast-limit 25
+exit
+interface 12
+   broadcast-limit 25
+exit
+interface 13
+   broadcast-limit 25
+exit
+interface 14
+   broadcast-limit 25
+exit
+interface 15
+   broadcast-limit 25
+exit
+interface 16
+   broadcast-limit 25
+exit
+interface 17
+   broadcast-limit 25
+exit
+interface 18
+   broadcast-limit 25
+exit
+interface 19
+   broadcast-limit 25
+exit
+interface 20
+   broadcast-limit 25
+exit
+interface 21
+   broadcast-limit 25
+exit
+interface 22
+   broadcast-limit 25
+exit
+interface 23
+   broadcast-limit 25
+exit
+interface 24
+   broadcast-limit 25
+exit
+ip default-gateway 10.10.1.1
+sntp server 192.168.168.1 2
+sntp server 172.27.79.3
+timesync sntp
+sntp unicast
+logging facility local7
+logging 192.168.168.9
+vlan 1
+   name "DEFAULT_VLAN"
+   no ip address
+   no untagged 1-26
+   exit
+vlan 192
+   name "mgmt"
+   ip address 192.168.168.18 255.255.255.0
+   tagged 1,25-26
+   exit
+vlan 51
+   name "ats"
+   untagged 21-24
+   no ip address
+   tagged 1,25-26
+   exit
+vlan 55
+   name "Video"
+   untagged 9,20
+   no ip address
+   tagged 1,25-26
+   exit
+vlan 141
+   name "prt"
+   untagged 4,11
+   no ip address
+   tagged 1,25-26
+   exit
+vlan 421
+   name "vid"
+   untagged 2-3,5-6,8,12
+   no ip address
+   tagged 1,25-26
+   exit
+vlan 861
+   name "mgm"
+   ip address 10.101.1.100 255.255.255.0
+   tagged 1,25-26
+   exit
+vlan 101
+   name "user"
+   untagged 1,7,10,13-19,25-26
+   no ip address
+   exit
+no lldp run
+qos type-of-service diff-services
+qos type-of-service diff-services 000000 dscp 000000
+qos type-of-service diff-services 100010 dscp 100010
+qos type-of-service diff-services 101110 dscp 101110
+qos type-of-service diff-services 110000 dscp 110000
+aaa authentication console login tacacs local
+aaa authentication console enable tacacs local
+aaa authentication telnet login tacacs local
+aaa authentication telnet enable tacacs local
+aaa authentication ssh login tacacs local
+aaa authentication ssh enable tacacs local
+tacacs-server host 172.27.79.3
+primary-vlan 861
+management-vlan 861
+spanning-tree
+spanning-tree 2 admin-edge-port
+spanning-tree 2 bpdu-protection
+spanning-tree 3 admin-edge-port
+spanning-tree 3 bpdu-protection
+spanning-tree 4 admin-edge-port
+spanning-tree 4 bpdu-protection
+spanning-tree 5 admin-edge-port
+spanning-tree 5 bpdu-protection
+spanning-tree 6 admin-edge-port
+spanning-tree 6 bpdu-protection
+spanning-tree 7 admin-edge-port
+spanning-tree 7 bpdu-protection
+spanning-tree 8 admin-edge-port
+spanning-tree 8 bpdu-protection
+spanning-tree 9 admin-edge-port
+spanning-tree 9 bpdu-protection
+spanning-tree 10 admin-edge-port
+spanning-tree 10 bpdu-protection
+spanning-tree 11 admin-edge-port
+spanning-tree 11 bpdu-protection
+spanning-tree 12 admin-edge-port
+spanning-tree 12 bpdu-protection
+spanning-tree 13 admin-edge-port
+spanning-tree 13 bpdu-protection
+spanning-tree 14 admin-edge-port
+spanning-tree 14 bpdu-protection
+spanning-tree 15 admin-edge-port
+spanning-tree 15 bpdu-protection
+spanning-tree 16 admin-edge-port
+spanning-tree 16 bpdu-protection
+spanning-tree 17 admin-edge-port
+spanning-tree 17 bpdu-protection
+spanning-tree 18 admin-edge-port
+spanning-tree 18 bpdu-protection
+spanning-tree 19 admin-edge-port
+spanning-tree 19 bpdu-protection
+spanning-tree 20 admin-edge-port
+spanning-tree 20 bpdu-protection
+spanning-tree 21 admin-edge-port
+spanning-tree 22 admin-edge-port
+spanning-tree 23 admin-edge-port
+spanning-tree 24 admin-edge-port
+password manager
