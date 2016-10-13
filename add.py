@@ -68,7 +68,8 @@ def created(namediff):
 					print ("It is impossible to replace immediately in line to specify two or more words or a set of numbers.\n Specifies whether one word. For instance vlan 412, you must first vlan, and then 412.\n")
 				else:
 					if re.match('\d{1,4}$', quest2) != None:
-						temp[quest2] = '\d{1,4}'
+						lenght = len(quest2)
+						temp[quest2] = '\d{'+lenght+'}'
 						string = string.replace(quest2, '\d{1,4}')
 					else:
 						if re.match ('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', quest2) != None:
