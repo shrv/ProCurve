@@ -70,8 +70,8 @@ def created(namediff):
 					print ("It is impossible to replace immediately in line to specify two or more words or a set of numbers.\n Specifies whether one word. For instance vlan 412, you must first vlan, and then 412.\n")
 				else:
 					if re.match('\d{1,4}$', quest2) != None:
-						lenght = len(quest2)
-						temp[quest2] = '\d{'+lenght+'}'
+						lenght = len(str(quest2))
+						temp[quest2] = '\d{'+str(lenght)+'}'
 						string = string.replace(quest2, '\d{1,4}')
 					else:
 						if re.match ('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', quest2) != None:
@@ -86,6 +86,7 @@ def created(namediff):
 			temp['mod'] = 1
 			tmpl[z] = temp
 			z += 1
+			x += 1
 		elif quest1.lower() != 'n':
 			print ('Incorrect characters are introduced')
 			sys.exit()
@@ -103,20 +104,20 @@ def created(namediff):
 	f.write(str(tmpl))
 	f.close()	
 
-def add_del():
-	def Parserad():
-		parserad = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve. Manually adding or deleting rows into an existing template.", epilog = "")
-		parserad.add_argument ('-t', '--template', required = True, type = str, help = 'Specify the folder and name of the template file. Example: -t /usr/share/template.txt. Required parameter.')
-		parserad.add_argument ('-nr', '--newrows', required = False, type = str, help = 'Copy the string to add. If, for example, you need to add interface or vlan configure. Adding customization interface as one line. Exmaple: interface 24 broadcast-limit 25 exit ')	
-		parserad.add_argument ('-ac', '--action', required = True, type = str, choices = ['add', 'del'], help = 'select the action "add" - add a string or "del" - remove the line. Required parameter.')
-		return parserad
-
-	parserad = Parserad()
-	nameadd = parserad.parse_args(sys.argv[1:])
-	
-	if nameadd.action.lower() == 'add':
-		
-	else:
-		
+#def add_del():
+#	def Parserad():
+#		parserad = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve. Manually adding or deleting rows into an existing template.", epilog = "")
+#		parserad.add_argument ('-t', '--template', required = True, type = str, help = 'Specify the folder and name of the template file. Example: -t /usr/share/template.txt. Required parameter.')
+#		parserad.add_argument ('-nr', '--newrows', required = False, type = str, help = 'Copy the string to add. If, for example, you need to add interface or vlan configure. Adding customization interface as one line. Exmaple: interface 24 broadcast-limit 25 exit ')	
+#		parserad.add_argument ('-ac', '--action', required = True, type = str, choices = ['add', 'del'], help = 'select the action "add" - add a string or "del" - remove the line. Required parameter.')
+#		return parserad
+#
+#	parserad = Parserad()
+#	nameadd = parserad.parse_args(sys.argv[1:])
+#	
+#	if nameadd.action.lower() == 'add':
+#		
+#	else:
+#		
 if __name__ == '__main__':
 	add_del()
