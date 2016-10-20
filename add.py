@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
+import string
+import re
+import os
+import sys
+import argparse
+
 def created(namediff):
-	import string
-	import re
-	import os
-	import sys
-	
+
 	tmpl = {}
 	z = 0
 	files = [fil for fil in os.listdir(namediff.dir) if fil.endswith(('.txt'))]
@@ -100,3 +102,21 @@ def created(namediff):
 	f = open(template_dir, 'w')
 	f.write(str(tmpl))
 	f.close()	
+
+def add_del():
+	def Parserad():
+		parserad = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve. Manually adding or deleting rows into an existing template.", epilog = "")
+		parserad.add_argument ('-t', '--template', required = True, type = str, help = 'Specify the folder and name of the template file. Example: -t /usr/share/template.txt. Required parameter.')
+		parserad.add_argument ('-nr', '--newrows', required = False, type = str, help = 'Copy the string to add. If, for example, you need to add interface or vlan configure. Adding customization interface as one line. Exmaple: interface 24 broadcast-limit 25 exit ')	
+		parserad.add_argument ('-ac', '--action', required = True, type = str, choices = ['add', 'del'], help = 'select the action "add" - add a string or "del" - remove the line. Required parameter.')
+		return parserad
+
+	parserad = Parserad()
+	nameadd = parserad.parse_args(sys.argv[1:])
+	
+	if nameadd.action.lower() == 'add':
+		
+	else:
+		
+if __name__ == '__main__':
+	add_del()
