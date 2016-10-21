@@ -105,20 +105,28 @@ def created(namediff):
 	f.write(str(tmpl))
 	f.close()	
 
-#def add_del():
-#	def Parserad():
-#		parserad = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve. Manually adding or deleting rows into an existing template.", epilog = "")
-#		parserad.add_argument ('-t', '--template', required = True, type = str, help = 'Specify the folder and name of the template file. Example: -t /usr/share/template.txt. Required parameter.')
-#		parserad.add_argument ('-nr', '--newrows', required = False, type = str, help = 'Copy the string to add. If, for example, you need to add interface or vlan configure. Adding customization interface as one line. Exmaple: interface 24 broadcast-limit 25 exit ')	
-#		parserad.add_argument ('-ac', '--action', required = True, type = str, choices = ['add', 'del'], help = 'select the action "add" - add a string or "del" - remove the line. Required parameter.')
-#		return parserad
-#
-#	parserad = Parserad()
-#	nameadd = parserad.parse_args(sys.argv[1:])
-#	
-#	if nameadd.action.lower() == 'add':
-#		
-#	else:
-#		
+def add_del():
+	def Parserad():
+		parserad = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve. Manually adding or deleting rows into an existing template.", epilog = "")
+		parserad.add_argument ('-t', '--template', required = True, type = str, help = 'Specify the folder and name of the template file. Example: -t /usr/share/template.txt. Required parameter.')
+		parserad.add_argument ('-nr', '--newrows', required = False, type = str, help = 'Copy the string to add. If, for example, you need to add interface or vlan configure. Adding customization interface as one line. Exmaple: interface 24 broadcast-limit 25 exit ')	
+		parserad.add_argument ('-ac', '--action', required = True, type = str, choices = ['add', 'del'], help = 'select the action "add" - add a string or "del" - remove the line. Required parameter.')
+		return parserad
+
+	parserad = Parserad()
+	nameadd = parserad.parse_args(sys.argv[1:])
+	pattern = {}
+
+	if nameadd.action.lower() == 'add':
+		
+		fil = open(nameadd.template, 'r')
+		pattern = fil.read()
+		fil.close()
+		pattern
+		print (pattern)
+
+	else:
+		
+		print ('del')
 if __name__ == '__main__':
 	add_del()
