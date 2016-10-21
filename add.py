@@ -120,13 +120,14 @@ def add_del():
 	if nameadd.action.lower() == 'add':
 		
 		fil = open(nameadd.template, 'r')
-		pattern = fil.read()
+		pattern = fil.readlines()
 		fil.close()
-		pattern
-		print (pattern)
+		pattern[0]
+		print (pattern.get('0'))
+#		print (pattern)
 
 	else:
+		sys.exit()
 		
-		print ('del')
 if __name__ == '__main__':
 	add_del()
