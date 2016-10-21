@@ -71,15 +71,16 @@ def created(namediff):
 				else:
 					if re.match('\d{1,4}$', quest2) != None:
 						lenght = len(str(quest2))
-						temp[quest2] = '\d{'+str(lenght)+'}'
-						string = string.replace(quest2, '\d{1,4}')
+						temp[quest2] = '[0-9]{'+str(lenght)+'}'
+						print (temp[quest2])
+						string = string.replace(quest2, temp[quest2])
 					else:
-						if re.match ('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', quest2) != None:
-							temp[quest2] = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
-							string = string.replace(quest2, '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+						if re.match ('[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$', quest2) != None:
+							temp[quest2] = '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}'
+							string = string.replace(quest2, '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}')
 						else:
-							temp[quest2] = '[a-zA-Z0-9\_\-\.\,]{1,}'
-							string = string.replace(quest2, '[a-zA-Z0-9\_\-\.\,]{1,}')
+							temp[quest2] = '[a-zA-Z0-9_-.,]{1,}'
+							string = string.replace(quest2, '[a-zA-Z0-9_-.,]{1,}')
 				quest1 = input ("Wanted more changes in the line: \""+original+"\". It is necessary to modify - 'Y', leave as is - 'N': ")
 			temp['patt'] = string
 			temp['wrld'] = world
