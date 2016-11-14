@@ -9,7 +9,6 @@ import argparse
 
 def created(namediff):
 
-	tmpl = {}
 	z = 0
 	files = [fil for fil in os.listdir(namediff.dir) if fil.endswith(('.txt'))]
 	fdir = namediff.dir+files[0]
@@ -60,6 +59,7 @@ def created(namediff):
 		quest1 = input ("You need to modify the line or leave as is in string: \""+original+"\". It is necessary to modify - 'Y', leave as is - 'N': ")
 		if quest1.lower() == 'y':
 			temp = {}
+			tmpl = ''
 			temp['orig'] = string
 			while quest1.lower() == 'y':
 				quest2 = input ("Enter a part of a string \""+original+"\" , which is variable, is not required to take into consider. Specify strictly in line configuration: ")
@@ -85,25 +85,30 @@ def created(namediff):
 			temp['patt'] = string
 			temp['wrld'] = world
 			temp['mod'] = 1
-			tmpl[z] = temp
-			z += 1
+			tmpl = temp + '\n'
 			x += 1
+			tmpl = tmpl.replace('"', '\"')
+			template_dir = (os.path.dirname(__file__) + '/template.txt')
+			f = open(template_dir, 'a')
+			f.write(str(tmpl))
+			f.close()
 		elif quest1.lower() != 'n':
 			print ('Incorrect characters are introduced')
 			sys.exit()
 		else :
 			temp = {}
+			tmpl = ''
 			temp['orig'] = string
 			temp['patt'] = string
 			temp['wrld'] = world
 			temp['mod'] = 0
-			tmpl[z] = temp
-			z += 1
+			tmpl = temp + '\n'
 			x += 1
-	template_dir = (os.path.dirname(__file__)+'/template.txt')
-	f = open(template_dir, 'w')
-	f.write(str(tmpl))
-	f.close()	
+			tmpl = tmpl.replace('"', '\"')
+			template_dir = (os.path.dirname(__file__)+'/template.txt')
+			f = open(template_dir, 'a')
+			f.write(str(tmpl))
+			f.close()
 
 def add_del():
 	def Parserad():

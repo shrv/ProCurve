@@ -9,7 +9,7 @@ import add
 import conf
 import re
 
-def Parser():
+def Parser() -> object:
 	parser = argparse.ArgumentParser(description = "The Program for identity control configuration files of route HP ProCurve", epilog = "")
 	parser.add_argument ('-t', '--template', required = False, type = str, help = 'Specify the folder and name of the template file, the default name TEMPLATE.TXT and parent directory. If the file was not created, the parameter point is not required.')
 	parser.add_argument ('-d', '--dir', required = True, type = str,help = 'Specify the folder with the router configuration files. Required parameter.')
