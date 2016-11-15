@@ -87,7 +87,7 @@ def created(namediff):
 			temp['mod'] = 1
 			tmpl = temp + '\n'
 			x += 1
-			tmpl = tmpl.replace('"', '\"')
+			tmpl = tmpl.replace('"', '\\"')
 			template_dir = (os.path.dirname(__file__) + '/template.txt')
 			f = open(template_dir, 'a')
 			f.write(str(tmpl))
@@ -104,7 +104,7 @@ def created(namediff):
 			temp['mod'] = 0
 			tmpl = temp + '\n'
 			x += 1
-			tmpl = tmpl.replace('"', '\"')
+			tmpl = tmpl.replace('"', '\\"')
 			template_dir = (os.path.dirname(__file__)+'/template.txt')
 			f = open(template_dir, 'a')
 			f.write(str(tmpl))
